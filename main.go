@@ -1,13 +1,34 @@
 package main
 
 import (
-	"fmt"
-
+	//"fmt"
+    // "time"
 	// "first/test"
 	// "first/vgarcia"
 	//  "os"
 	//  "bufio"
+    "github.com/gin-gonic/gin"
+    "net/http"
 )
+
+func main() {
+  // Create a Gin router with default middleware (logger and recovery)
+  r := gin.Default()
+
+  r.GET("/", func(c *gin.Context) {
+    c.JSON(http.StatusOK, gin.H {
+        "message" : "def",
+    })
+  })
+  r.GET("/ping", func(c *gin.Context) {
+    c.JSON(http.StatusOK, gin.H{
+      "message": "pong",
+    })
+  })
+
+  // port 8080 (default)
+  r.Run()
+}
 
 // func main() {
 //     fmt.Println("test")
@@ -43,21 +64,21 @@ import (
 
 
 
-type rec struct {
+// type rec struct {
 
-    width, height int
-}
+//     width, height int
+// }
 
 
-func sumAndDiff(a, b int) (int, int) {
-    return a +b, a - b
-}
+// func sumAndDiff(a, b int) (int, int) {
+//     return a +b, a - b
+// }
 
-func (r *rec) area() int {
+// func (r *rec) area() int {
 
-    r.height = 56
-    return r.height * r.width
-}
+//     r.height = 56
+//     return r.height * r.width
+// }
 
 // func main() {
 
@@ -101,13 +122,13 @@ func (r *rec) area() int {
 // }
 
 
-func counter() func() int {
-    count := 0
-    return func() int {
-        count++
-        return count
-    }
-}
+// func counter() func() int {
+//     count := 0
+//     return func() int {
+//         count++
+//         return count
+//     }
+// }
 
 
 // func test(fd chan int) {
@@ -116,13 +137,13 @@ func counter() func() int {
 //     fmt.Println("testv2")
 // }
 
-func main() {
+// func main() {
 
-    c := counter()
+//     c := counter()
 
-    fmt.Println(c())
-    fmt.Println(c())
-    fmt.Println(c())
+//     fmt.Println(c())
+//     fmt.Println(c())
+//     fmt.Println(c())
   //   names := []string{"ricko", "pierrick", "feet"}
 
   //   c := make(chan int, 2)
@@ -137,4 +158,75 @@ func main() {
   //       fmt.Printf("%s\n", names[i])
   //   }
   //panic("This is a panic")
-}
+// }
+
+
+// func test(val []int, ch chan int) {
+
+//     for i := range val {
+//         ch <- val[i] * val[i]
+//     }
+//     close(ch)
+// }
+
+// func recieve(ch chan int) {
+
+//     for num := range ch {
+//         fmt.Println(num)
+//     }
+// }
+
+// func main() {
+
+//     val := []int{1,2,3,4,5}
+//     numbersChannel := make(chan int)
+
+//     go test(val, numbersChannel)
+//     recieve(numbersChannel)
+// }
+
+// type bjr struct {
+//     _jk int
+// }
+
+// type beta interface {
+//     joke() int
+// }
+
+// type alpha interface {
+//     Speak() string
+// }
+
+// type Test struct {
+//     _name string
+//     _age int
+// }
+
+// func (t bjr)Speak() string{
+//     return "fhsdfgsfhsdf"
+// }
+
+// func (t Test)Speak() string{
+//     return "fhsdfgsfhsdf"
+// }
+
+// func (t Test) Hello() {
+
+//     fmt.Println("hello", t._age, "name:", t._name)
+// }
+// func main() {
+
+//     yes := Test{_name : "non", _age : 56 }
+//     yes.Hello()
+
+//     var inter alpha
+//     var ko alpha
+
+//     ko = bjr{56}
+
+//     ko = Test{"51", 23}
+//     fmt.Println(ko)
+//     inter = Test{_name: "testo", _age: 6}
+//     fmt.Println(inter)
+
+// }
